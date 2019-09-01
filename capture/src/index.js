@@ -5,13 +5,13 @@ const captureImage = require('./scripts/captureImage')
 
 const argv = yargs
   .usage('Usage: $0 <command> [options]')
-  .command('image', 'Capture an image', function(yargs) {
+  .command('image', 'Capture an image', async (yargs) => {
     const argv = yargs
       .usage('Usage: $0 image [options]')
       .help('help')
       .argv
 
-    captureImage()
+    await captureImage()
   })
   .help('help')
   .argv
