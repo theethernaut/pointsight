@@ -1,0 +1,15 @@
+{
+  "name": "pointsight-capture",
+  "version": "0.0.1",
+  "description": "Pointsight capture program",
+  "main": "index.js",
+  "keywords": [
+    "pointsight",
+    "capture"
+  ],
+  "author": "Alejandro Santander & Juanchi Ansaldi",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^14.0.0"
+  }
+}

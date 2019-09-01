@@ -1,0 +1,20 @@
+{
+  "name": "pointsight",
+  "version": "0.0.1",
+  "description": "Open source webcam network",
+  "author": "Alejandro Santander & Juanchi Alsaldi",
+  "homepage": "https://github.com/ajsantander/pointsight#readme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajsantander/pointsight/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajsantander/pointsight.git"
+  },
+  "keywords": [
+    "opensource",
+    "webcam",
+    "network"
+  ]
+}
