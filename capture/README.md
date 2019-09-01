@@ -1,4 +1,4 @@
-## pointsight-capture
+# pointsight-capture
 
 ## Development
 
