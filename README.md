@@ -10,4 +10,4 @@ pointsight is composed of multiple packages that perform specific tasks.
 
 ### pointsight-capture
 
-Captures images and video using `fswebcam`.
+Captures images and video.
