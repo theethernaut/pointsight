@@ -13,6 +13,7 @@ async function captureImage() {
 
   await cli(
     'fswebcam',
+    '--no-banner',
     `--device ${opts.device}`,
     `${dirPath}/snapshot.jpeg`
   )
