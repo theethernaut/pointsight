@@ -4,7 +4,7 @@ const exec = require('child_process').exec
 module.exports = function cli(executable, ...args) {
   const cwd = '.'
   const command = `${executable} ${args.join(' ')}`
-  console.log(command)
+  console.log('running command:', command)
 
   return new Promise(resolve => {
     exec(

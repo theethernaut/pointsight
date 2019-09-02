@@ -1,17 +1,20 @@
 const cli = require('../helpers/cli')
+const fs = require('fs')
 
 const opts = {
-  device: '/dev/video2',
-  output: './media/snapshot.jpg'
+  device: '/dev/video2'
 }
 
 async function captureImage() {
-  console.log(`Capturing image...`)
+  const dirPath = './media/image'
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true })
+  }
 
   await cli(
     'fswebcam',
     `--device ${opts.device}`,
-    `${opts.output}`
+    `${dirPath}/snapshot.jpeg`
   )
 }
 

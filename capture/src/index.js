@@ -5,12 +5,14 @@ const yargs = require('yargs')
 const captureImage = require('./scripts/captureImage')
 const recordVideo = require('./scripts/recordVideo')
 
+const binary = 'capture'
+
 // Wrap scripts in yargs commands.
 const argv = yargs
-  .usage('Usage: $0 <command> [options]')
+  .usage(`Usage: ${binary} <command> [options]`)
   .command('image', 'Capture an image', async (yargs) => {
     const argv = yargs
-      .usage('Usage: $0 image [options]')
+      .usage(`Usage: ${binary} image`)
       .help('help')
       .argv
 
@@ -18,11 +20,11 @@ const argv = yargs
   })
   .command('video', 'Record a video', async (yargs) => {
     const argv = yargs
-      .usage('Usage: $0 video [options]')
+      .usage(`Usage: ${binary} video <seconds>`)
       .help('help')
       .argv
 
-    await recordVideo()
+    await recordVideo(argv.seconds)
   })
   .help('help')
   .argv
