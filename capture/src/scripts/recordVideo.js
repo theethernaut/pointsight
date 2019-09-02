@@ -5,7 +5,9 @@ const opts = {
   device: '/dev/video2',
   width: 1024,
   height: 768,
-  framerate: 24
+  framerate: 24,
+  outputDir: '/tmp/pointsight/video',
+  outputFile: 'video.mkv'
 }
 
 async function recordVideo(seconds) {
@@ -13,9 +15,8 @@ async function recordVideo(seconds) {
     seconds = 5
   }
 
-  const dirPath = './media/video'
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true })
+  if (!fs.existsSync(opts.outputDir)) {
+    fs.mkdirSync(opts.outputDir, { recursive: true })
   }
 
   await cli(
@@ -26,7 +27,7 @@ async function recordVideo(seconds) {
     `-i ${opts.device}`,
     `-t ${seconds}`,
     `-y`,
-    `${dirPath}/snapshot.mkv`
+    `${opts.outputDir}/${opts.outputFile}`
   )
 }
 
