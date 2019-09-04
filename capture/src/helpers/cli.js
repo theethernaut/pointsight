@@ -4,14 +4,24 @@ const exec = require('child_process').exec
 module.exports = function cli(executable, ...args) {
   const cwd = '.'
   const command = `${executable} ${args.join(' ')}`
-  console.log('running command:', command)
 
   return new Promise(resolve => {
     exec(
       command,
       { cwd },
-      (error, stdout, stderr) => {
-        const err = error || stderr
+      (error, stderr, stdout) => {
+        let err = error
+
+        if (!err) {
+          if (stderr && stderr.length > 0) {
+            err = stderr
+          }
+        }
+
+        if (err) {
+          throw err
+        }
+
         resolve({
           code: err ? 1 : 0,
           error: err,

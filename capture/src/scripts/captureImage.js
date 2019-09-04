@@ -1,23 +1,35 @@
 const cli = require('../helpers/cli')
 const fs = require('fs')
+const path = require('path')
 
 const opts = {
   device: '/dev/video2',
-  outputDir: '/tmp/pointsight/image',
-  outputFile: 'image.jpg'
+  defaultOutput: '/tmp/pointsight/image/capture.jpg'
 }
 
-async function captureImage() {
-  if (!fs.existsSync(opts.outputDir)) {
-    fs.mkdirSync(opts.outputDir, { recursive: true })
+function prepareOutputPath(outputPath) {
+  const output = outputPath ? outputPath : opts.defaultOutput
+
+  const dir = path.dirname(output)
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true })
   }
+
+  return output
+}
+
+async function captureImage(outputPath) {
+  const output = prepareOutputPath(outputPath)
 
   await cli(
     'fswebcam',
     '--no-banner',
     `--device ${opts.device}`,
-    `${opts.outputDir}/${opts.outputFile}`
+    output
   )
 }
 
-module.exports = captureImage
+module.exports = {
+  opts,
+  captureImage
+}

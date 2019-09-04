@@ -7,7 +7,7 @@ const opts = {
   height: 768,
   framerate: 24,
   outputDir: '/tmp/pointsight/video',
-  outputFile: 'video.mkv'
+  outputFile: 'capture.mkv'
 }
 
 async function recordVideo(seconds) {
